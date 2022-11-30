@@ -4,8 +4,8 @@ import com.rafaelmardom.app.data.either.Either
 import com.rafaelmardom.app.data.either.ErrorApp
 
 interface RssLocalDataSource {
-    fun getAll(): Either<List<RssLocalDataModel>, ErrorApp>
-    fun getByWebsite(rssWebsite: String): Either<RssLocalDataModel, ErrorApp>
+    fun getAll(): Either<ErrorApp, List<RssLocalDataModel>>
+    fun getByWebsite(rssWebsite: String): Either<ErrorApp, RssLocalDataModel>
     fun save(website: String, url: String)
     fun saveAll(rssList: List<RssLocalDataModel>)
 }

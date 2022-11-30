@@ -16,25 +16,33 @@ class RssXmlLocalDataSource (
 
     private val editor = sharedPreferences.edit()
 
-    override fun getAll(): Either<List<RssLocalDataModel>, ErrorApp> {
+    override fun getAll(): Either<ErrorApp, List<RssLocalDataModel>> {
         val rssList = mutableListOf<RssLocalDataModel>()
 
-        sharedPreferences.all.forEach {
-            editor.apply {
-                rssList.add(serializer.fromJson(it.value as String, RssLocalDataModel::class.java))
-            }.apply()
+        try {
+            sharedPreferences.all.forEach {
+                editor.apply {
+                    rssList.add(
+                        serializer.fromJson(
+                            it.value as String,
+                            RssLocalDataModel::class.java
+                        )
+                    )
+                }.apply()
+            }
+            return rssList.right()
+        }catch (ex: java.lang.Exception){
+            return ErrorApp.DataError().left()
         }
-
-        return rssList.left()
     }
 
-    override fun getByWebsite(rssWebsite: String): Either<RssLocalDataModel, ErrorApp> {
+    override fun getByWebsite(rssWebsite: String): Either<ErrorApp, RssLocalDataModel> {
         val jsonRss = sharedPreferences.getString(rssWebsite, null)
         return if (jsonRss == null) {
-            ErrorApp.DataError().right()
+            ErrorApp.DataError().left()
         } else {
             val rss: RssLocalDataModel = serializer.fromJson(jsonRss, RssLocalDataModel::class.java)
-            rss.left()
+            rss.right()
         }
     }
 
