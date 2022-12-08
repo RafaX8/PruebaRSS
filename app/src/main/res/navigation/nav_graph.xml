@@ -13,12 +13,22 @@
     <fragment
         android:id="@+id/management"
         android:name="com.rafaelmardom.pruebarss.management.presentation.ManagementFragment"
-        android:label="ManagementFragment"/>
+        android:label="ManagementFragment">
+
+        <action
+            android:id="@+id/to_bottomsheet"
+            app:destination="@id/bottom_sheet"/>
+    </fragment>
 
     <fragment
         android:id="@+id/profile"
         android:name="com.rafaelmardom.pruebarss.profile.presentation.ProfileFragment"
         android:label="ProfileFragment"/>
+
+    <fragment
+        android:id="@+id/bottom_sheet"
+        android:name="com.rafaelmardom.pruebarss.management.presentation.AddRssBottomSheetFragment"
+        android:label="BottomSheet"/>
 
     <action
         android:id="@+id/to_feed"
