@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/add_rss"
-        android:title="@string/sample_feed"
+        android:title="@string/bottomsheet_add"
         android:icon="@drawable/ic_rss_add"
         app:showAsAction="always"/>
 </menu>
