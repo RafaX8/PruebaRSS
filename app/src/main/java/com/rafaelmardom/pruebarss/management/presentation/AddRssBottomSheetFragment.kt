@@ -53,7 +53,7 @@ class AddRssBottomSheetFragment : BottomSheetDialogFragment() {
     fun showSnackbar() {
         Snackbar.make(
             requireActivity().findViewById(R.id.main_fragment_container),
-            "Snackbar",
+            "Done",
             BaseTransientBottomBar.LENGTH_SHORT
         ).show()
     }
