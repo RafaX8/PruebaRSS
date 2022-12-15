@@ -2,6 +2,7 @@ package com.rafaelmardom.pruebarss.management.data.local.xml
 
 import android.content.SharedPreferences
 import com.rafaelmardom.pruebarss.management.data.local.RssLocalDataSource
+import com.rafaelmardom.pruebarss.management.domain.DomainRss
 
 class RssXmlLocalDataSource (
     private val sharedPreferences: SharedPreferences,
@@ -14,5 +15,11 @@ class RssXmlLocalDataSource (
             url,
             website
         ).apply()
+    }
+
+    override fun getAll(): List<DomainRss> {
+         return sharedPreferences.all.map {
+            DomainRss(it.value.toString(), it.key.toString())
+        }
     }
 }
