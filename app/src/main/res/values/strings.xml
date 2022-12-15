@@ -8,5 +8,12 @@
     <string name="menu_feed">Feed</string>
     <string name="menu_management">Management</string>
     <string name="menu_profile">Profile</string>
+    <!-- BottomSheet Strings -->
+    <string name="bottomsheet_add">Add RSS</string>
+    <string name="bottomsheet_website">Website</string>
+    <string name="bottomsheet_url">URL</string>
+    <string name="bottomsheet_save">SAVE</string>
+    <string name="bottomsheet_cancel">CANCEL</string>
+
 
 </resources>
