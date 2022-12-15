@@ -23,16 +23,14 @@ class RssManagementViewModel (
             val rssManagement = getRssSourceUseCase.execute()
             managementPublisher.postValue(
                 ManagementUiState(
-                    rssManagement,
-                     // false
+                    rssManagement
                 ),
             )
         }
     }
 
     data class ManagementUiState(
-        val rssManagement: List<GetRssSourceUseCase.RssManagement> = emptyList(),
-        // val isLoading: Boolean = false
+        val rssManagement: List<GetRssSourceUseCase.RssManagement> = emptyList()
     )
 
 }
