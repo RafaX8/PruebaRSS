@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/feed">
+
+    <fragment
+        android:id="@+id/feed"
+        android:name="com.rafaelmardom.pruebarss.feed.presentation.FeedFragment"
+        android:label="FeedFragment"/>
+
+    <fragment
+        android:id="@+id/management"
+        android:name="com.rafaelmardom.pruebarss.management.presentation.ManagementFragment"
+        android:label="ManagementFragment">
+
+        <action
+            android:id="@+id/to_bottomsheet"
+            app:destination="@id/bottom_sheet"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.rafaelmardom.pruebarss.profile.presentation.ProfileFragment"
+        android:label="ProfileFragment"/>
+
+    <dialog
+        android:id="@+id/bottom_sheet"
+        android:name="com.rafaelmardom.pruebarss.management.presentation.AddRssBottomSheetFragment"
+        android:label="BottomSheet"/>
+
+    <action
+        android:id="@+id/to_feed"
+        app:destination="@id/feed"
+        />
+
+    <action
+        android:id="@+id/to_management"
+        app:destination="@id/management"
+        />
+
+    <action
+        android:id="@+id/to_profile"
+        app:destination="@id/profile"
+        />
+</navigation>
