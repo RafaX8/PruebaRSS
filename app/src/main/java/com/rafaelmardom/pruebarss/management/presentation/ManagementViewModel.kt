@@ -15,11 +15,11 @@ class ManagementViewModel (
         MutableLiveData<ManagementUiState>()
     }
 
-    fun saveRss(url:String, name:String){
+    fun saveRss(website:String, url:String,){
         managementPublisher.value = ManagementUiState(true)
 
         viewModelScope.launch(Dispatchers.IO){
-            saveRssUseCase.execute(url, name)
+            saveRssUseCase.execute(website, url)
             managementPublisher.postValue(
                 ManagementUiState(
                     true
