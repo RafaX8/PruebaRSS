@@ -17,9 +17,8 @@ class RssXmlLocalDataSource (
         ).apply()
     }
 
-    override fun getAll(): List<DomainRss> {
-         return sharedPreferences.all.map {
-            DomainRss(it.value.toString(), it.key.toString())
-        }
+    override fun getAll(): List<DomainRss> =
+      sharedPreferences.all.map {
+        DomainRss(it.value.toString(), it.key.toString())
     }
 }

@@ -1,19 +1,18 @@
 package com.rafaelmardom.pruebarss.management.data
 
+import com.rafaelmardom.pruebarss.management.data.local.RssLocalDataSource
 import com.rafaelmardom.pruebarss.management.data.local.xml.RssXmlLocalDataSource
 import com.rafaelmardom.pruebarss.management.domain.DomainRss
 import com.rafaelmardom.pruebarss.management.domain.DomainRssRepository
 
 class RssDataRepository (
-    private val localSource: RssXmlLocalDataSource
+    private val localSource: RssLocalDataSource
 ): DomainRssRepository{
 
     override fun save(website: String, url: String) {
         localSource.save(website, url)
     }
 
-    override fun getAll(): List<DomainRss> {
-        return localSource.getAll()
-    }
-
+    override fun getAll(): List<DomainRss> =
+        localSource.getAll()
 }
