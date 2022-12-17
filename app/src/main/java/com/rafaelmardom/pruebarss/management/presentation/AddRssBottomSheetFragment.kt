@@ -38,8 +38,8 @@ class AddRssBottomSheetFragment : BottomSheetDialogFragment() {
         binding?.apply {
             saveRssButton?.setOnClickListener {
                 viewModel?.saveRss(
-                    rssInputUrl.text.toString(),
-                    rssInputName.text.toString()
+                    rssInputWebsite.text.toString() ,
+                    rssInputUrl.text.toString()
                 )
                 findNavController().navigateUp()
                 showSnackbar()
