@@ -8,9 +8,15 @@ import com.rafaelmardom.pruebarss.management.domain.GetRssSourceUseCase
 class RssManagementViewHolder (
     private val view: View
 ): RecyclerView.ViewHolder( view ){
-    fun bind (rss: GetRssSourceUseCase.RssManagement){
+    fun bind (
+        rss: GetRssSourceUseCase.RssManagement,
+        itemClick: ((String) -> Unit?)?
+    ){
         val binding = ViewItemRssManagementBinding.bind(view)
         binding.websiteText.text = rss.website
         binding.urlText.text = rss.url
+        binding.deleteButton.setOnClickListener {
+            itemClick?.invoke(rss.url)
+        }
     }
 }
