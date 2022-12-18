@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.rafaelmardom.pruebarss.management.data.RssDataRepository
 import com.rafaelmardom.pruebarss.management.data.local.xml.RssXmlLocalDataSource
+import com.rafaelmardom.pruebarss.management.domain.DeleteRssUseCase
 import com.rafaelmardom.pruebarss.management.domain.GetRssSourceUseCase
 import com.rafaelmardom.pruebarss.management.domain.SaveRssUseCase
 
@@ -21,10 +22,19 @@ class ManagementFactory {
     }
     // MANAGEMENT
     fun getRssManagementViewModel(applicationContext: Context) : RssManagementViewModel{
-        return RssManagementViewModel(getRssSourceUseCase(applicationContext))
+        return RssManagementViewModel(
+            getRssSourceUseCase(applicationContext),
+            deleteRssSourceUseCase(applicationContext)
+        )
     }
     private fun getRssSourceUseCase(context: Context): GetRssSourceUseCase {
         return GetRssSourceUseCase(
+            getRssRepository(context)
+        )
+    }
+
+    private fun deleteRssSourceUseCase(context: Context): DeleteRssUseCase {
+        return DeleteRssUseCase(
             getRssRepository(context)
         )
     }

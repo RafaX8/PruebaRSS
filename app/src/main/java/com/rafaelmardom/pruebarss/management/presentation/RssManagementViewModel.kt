@@ -3,13 +3,15 @@ package com.rafaelmardom.pruebarss.management.presentation
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.rafaelmardom.pruebarss.management.domain.DeleteRssUseCase
 import com.rafaelmardom.pruebarss.management.domain.GetRssSourceUseCase
 import com.rafaelmardom.pruebarss.management.domain.SaveRssUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class RssManagementViewModel (
-    private val getRssSourceUseCase: GetRssSourceUseCase
+    private val getRssSourceUseCase: GetRssSourceUseCase,
+    private val deleteRssUseCase: DeleteRssUseCase
 ) : ViewModel() {
 
     val managementPublisher: MutableLiveData<ManagementUiState> by lazy {
@@ -26,6 +28,12 @@ class RssManagementViewModel (
                     rssManagement
                 ),
             )
+        }
+    }
+
+    fun deleteRss(url:String){
+        viewModelScope.launch (Dispatchers.IO){
+            deleteRssUseCase.execute(url)
         }
     }
 

@@ -10,6 +10,11 @@ import com.rafaelmardom.pruebarss.management.domain.GetRssSourceUseCase
 class RssAdapter: RecyclerView.Adapter<RssManagementViewHolder>() {
 
     private val dataItems = mutableListOf<GetRssSourceUseCase.RssManagement>()
+    var itemClick: ((String) -> Unit)? =null
+
+    fun setOnClick(itemClick :(String) -> Unit){
+        this.itemClick = itemClick
+    }
 
     fun setDataItems(movies: List<GetRssSourceUseCase.RssManagement>) {
         dataItems.clear()
@@ -30,7 +35,7 @@ class RssAdapter: RecyclerView.Adapter<RssManagementViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RssManagementViewHolder, position: Int) {
-        holder.bind(dataItems[position])
+        holder.bind(dataItems[position], itemClick)
     }
 
     override fun getItemCount() = dataItems.size

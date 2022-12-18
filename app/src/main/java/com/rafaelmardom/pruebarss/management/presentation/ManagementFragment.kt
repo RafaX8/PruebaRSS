@@ -9,6 +9,8 @@ import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import com.rafaelmardom.pruebarss.R
 import com.rafaelmardom.pruebarss.databinding.FragmentManagementBinding
 import com.rafaelmardom.pruebarss.management.presentation.adapter.RssAdapter
@@ -54,6 +56,10 @@ class ManagementFragment : Fragment() {
                     LinearLayoutManager.VERTICAL,
                     false
                 )
+            rssAdapter.setOnClick {
+                viewModel?.deleteRss(it)
+                showSnackbar()
+            }
         }
     }
 
@@ -68,5 +74,13 @@ class ManagementFragment : Fragment() {
         findNavController().navigate(
             ManagementFragmentDirections.toBottomsheet()
         )
+    }
+
+    fun showSnackbar() {
+        Snackbar.make(
+            requireActivity().findViewById(R.id.main_fragment_container),
+            "Fuente eliminada correctamente",
+            BaseTransientBottomBar.LENGTH_SHORT
+        ).show()
     }
 }
