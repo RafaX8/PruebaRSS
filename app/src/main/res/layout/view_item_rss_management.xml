@@ -32,6 +32,17 @@
             app:layout_constraintStart_toStartOf="@id/website_text"
             app:layout_constraintTop_toBottomOf="@id/website_text"/>
 
+
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_rss_delete"
+            android:contentDescription="@string/rss_delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
