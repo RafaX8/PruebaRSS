@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class RssManagementViewModel (
     private val getRssSourceUseCase: GetRssSourceUseCase,
-    val deleteRssUseCase: DeleteRssUseCase
+    private val deleteRssUseCase: DeleteRssUseCase
 ) : ViewModel() {
 
     val managementPublisher: MutableLiveData<ManagementUiState> by lazy {
