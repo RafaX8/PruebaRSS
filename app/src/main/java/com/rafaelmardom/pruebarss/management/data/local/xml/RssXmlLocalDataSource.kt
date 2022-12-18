@@ -22,4 +22,13 @@ class RssXmlLocalDataSource (
             DomainRss(it.value.toString(), it.key.toString())
         }
     }
+
+    override fun delete (url:String): Boolean {
+        if(sharedPreferences.contains(url)){
+            editor.remove(url).apply()
+            return true
+        }
+        return false
+    }
+
 }

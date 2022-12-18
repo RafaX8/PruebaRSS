@@ -16,4 +16,6 @@ class RssDataRepository (
         return localSource.getAll()
     }
 
+    override fun delete(url: String): Boolean = localSource.delete(url)
+
 }
