@@ -19,8 +19,9 @@ class AddRssBottomSheetFragment : BottomSheetDialogFragment() {
     val viewModel by lazy {
         this.activity?.let {
             ManagementFactory().saveRss(
-                    it.getSharedPreferences("rssLocal", MODE_PRIVATE),
-                )
+                // it.getSharedPreferences("rssLocal", MODE_PRIVATE),
+                this.requireContext()
+            )
         }
     }
 

@@ -5,18 +5,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rafaelmardom.pruebarss.R
+import com.rafaelmardom.pruebarss.management.domain.DomainRss
 import com.rafaelmardom.pruebarss.management.domain.GetRssSourceUseCase
 
-class RssAdapter: RecyclerView.Adapter<RssManagementViewHolder>() {
+class RssAdapter : RecyclerView.Adapter<RssManagementViewHolder>()
+{
+    private val dataItems = mutableListOf<DomainRss>()
+    //private val dataItems = mutableListOf<GetRssSourceUseCase.RssManagement>()
+    var itemClick: ((String) -> Unit)? = null
 
-    private val dataItems = mutableListOf<GetRssSourceUseCase.RssManagement>()
-    var itemClick: ((String) -> Unit)? =null
-
-    fun setOnClick(itemClick :(String) -> Unit){
+    fun setOnClick(itemClick: (String) -> Unit) {
         this.itemClick = itemClick
     }
 
-    fun setDataItems(movies: List<GetRssSourceUseCase.RssManagement>) {
+    fun setDataItems(movies: List<DomainRss>/*List<GetRssSourceUseCase.RssManagement>*/) {
         dataItems.clear()
         dataItems.addAll(movies)
         notifyDataSetChanged()

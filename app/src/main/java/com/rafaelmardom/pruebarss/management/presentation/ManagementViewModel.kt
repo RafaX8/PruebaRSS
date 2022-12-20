@@ -16,6 +16,10 @@ class ManagementViewModel (
     }
 
     fun saveRss(website:String, url:String){
+        viewModelScope.launch {
+            saveRssUseCase.execute(website, url)
+        }
+        /*
         managementPublisher.value = ManagementUiState(true)
 
         viewModelScope.launch(Dispatchers.IO){
@@ -26,6 +30,7 @@ class ManagementViewModel (
                 )
             )
         }
+         */
     }
 
     data class ManagementUiState(
