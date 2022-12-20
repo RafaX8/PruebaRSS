@@ -3,12 +3,21 @@ package com.rafaelmardom.pruebarss.management.presentation
 import android.content.Context
 import android.content.SharedPreferences
 import com.rafaelmardom.pruebarss.management.data.RssDataRepository
+import com.rafaelmardom.pruebarss.management.data.local.datastore.RssDataStore
 import com.rafaelmardom.pruebarss.management.data.local.xml.RssXmlLocalDataSource
 import com.rafaelmardom.pruebarss.management.domain.DeleteRssUseCase
 import com.rafaelmardom.pruebarss.management.domain.GetRssSourceUseCase
 import com.rafaelmardom.pruebarss.management.domain.SaveRssUseCase
 
 class ManagementFactory {
+    fun saveRss(context: Context): ManagementViewModel {
+        return ManagementViewModel(
+            SaveRssUseCase(
+                getRssRepository(context)
+            )
+        )
+    }
+    /*
     fun saveRss(sharedPreferences: SharedPreferences): ManagementViewModel {
         return ManagementViewModel(
             SaveRssUseCase(
@@ -20,6 +29,7 @@ class ManagementFactory {
             )
         )
     }
+     */
     // MANAGEMENT
     fun getRssManagementViewModel(applicationContext: Context) : RssManagementViewModel{
         return RssManagementViewModel(
@@ -42,9 +52,18 @@ class ManagementFactory {
     //
     private fun getRssRepository(context: Context): RssDataRepository {
         return RssDataRepository(
+            RssDataStore(
+                context
+            )
+        )
+    }
+    /*
+    private fun getRssRepository(context: Context): RssDataRepository {
+        return RssDataRepository(
             RssXmlLocalDataSource(
                 context.getSharedPreferences("rssLocal", Context.MODE_PRIVATE)
             )
         )
     }
+     */
 }

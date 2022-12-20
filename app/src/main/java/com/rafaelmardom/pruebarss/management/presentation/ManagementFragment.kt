@@ -65,7 +65,7 @@ class ManagementFragment : Fragment() {
 
     private fun setupObservers(){
         val rssState = Observer<RssManagementViewModel.ManagementUiState> {
-            rssAdapter.setDataItems(it.rssManagement)
+            it.rssManagement?.let { it1 -> rssAdapter.setDataItems(it1) }
         }
         viewModel.managementPublisher.observe(viewLifecycleOwner, rssState)
     }
